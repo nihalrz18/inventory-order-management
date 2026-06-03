@@ -8,6 +8,7 @@ on:
 
 env:
   IMAGE_NAME: nihalrz18/inventory-order-management-backend
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build-and-push:
@@ -35,6 +36,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
+          cache: false
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }}
