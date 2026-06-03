@@ -137,7 +137,8 @@ docker compose up --build
 4. Set **Build Command**: `pip install -r requirements.txt`
 5. Set **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 6. Add environment variable `DATABASE_URL` pointing to a Render PostgreSQL instance
-7. Add `ALLOWED_ORIGINS` with your Vercel frontend URL
+7. Add `ALLOWED_ORIGINS` with your Vercel frontend URL, for example `https://inventory-order-management-2jkjuduv9-nihal-s-projects7.vercel.app`
+   - For testing only, `ALLOWED_ORIGINS=*` will allow any origin.
 
 ### Frontend on Vercel
 

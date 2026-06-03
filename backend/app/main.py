@@ -13,7 +13,8 @@ app = FastAPI(
     version="1.0.0",
 )
 
-origins = [o.strip() for o in settings.ALLOWED_ORIGINS.split(",") if o.strip()]
+allowed_origins_value = settings.ALLOWED_ORIGINS.strip()
+origins = [o.strip() for o in allowed_origins_value.split(",") if o.strip()]
 
 cors_options = {
     "allow_credentials": False,
@@ -21,7 +22,9 @@ cors_options = {
     "allow_headers": ["*"],
 }
 
-if origins:
+if allowed_origins_value == "*" or allowed_origins_value == "":
+    cors_options["allow_origin_regex"] = ".*"
+elif origins:
     cors_options["allow_origins"] = origins
 else:
     cors_options["allow_origin_regex"] = ".*"
